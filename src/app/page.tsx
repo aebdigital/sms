@@ -472,7 +472,7 @@ export default function Home() {
             onMouseLeave={() => setMapActive(false)}
           >
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2672.5!2d19.3483!3d48.2131!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x473fc67c1c6b7e5d%3A0x400f7d1c6978bd0!2sSNP%2018%2C%20990%2001%20Ve%C4%BEk%C3%BD%20Krt%C3%AD%C5%A1%2C%20Slovakia!5e0!3m2!1ssk!2ssk!4v1700000000000!5m2!1ssk!2ssk"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2672.5!2d19.3483!3d48.2131!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x473ff965ee690cab%3A0x710c3b4e902a0a86!5e0!3m2!1ssk!2ssk!4v1700000000000!5m2!1ssk!2ssk"
               width="100%"
               height="400"
               style={{ border: 0, pointerEvents: mapActive ? "auto" : "none" }}
