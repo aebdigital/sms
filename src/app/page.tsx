@@ -120,27 +120,21 @@ export default function Home() {
           </a>
 
           {/* Desktop nav */}
-          <div className="hidden items-center gap-8 md:flex">
+          <div className="hidden items-center gap-10 md:flex">
             {NAV_LINKS.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
-                className="text-sm font-medium text-white/80 transition-colors hover:text-white"
+                className="text-base font-semibold text-white transition-opacity hover:opacity-70"
               >
                 {link.label}
               </a>
             ))}
-            <a
-              href="#kontakt"
-              className="rounded-lg bg-blue-600 px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-blue-700"
-            >
-              Kontaktujte nás
-            </a>
           </div>
 
           {/* Mobile menu button */}
           <button
-            className="md:hidden"
+            className="relative z-50 md:hidden"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle menu"
           >
@@ -153,30 +147,27 @@ export default function Home() {
             </svg>
           </button>
         </div>
+      </nav>
 
-        {/* Mobile nav */}
-        {mobileMenuOpen && (
-          <div className="bg-black/60 px-6 py-4 backdrop-blur-sm md:hidden">
-            {NAV_LINKS.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="block py-3 text-sm font-medium text-white/80 transition-colors hover:text-white"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                {link.label}
-              </a>
-            ))}
+      {/* Mobile fullscreen overlay */}
+      <div
+        className={`fixed inset-0 z-40 flex flex-col items-center justify-center bg-slate-900/95 backdrop-blur-md transition-opacity duration-300 md:pointer-events-none md:hidden ${
+          mobileMenuOpen ? "opacity-100" : "pointer-events-none opacity-0"
+        }`}
+      >
+        <nav className="flex flex-col items-center gap-10">
+          {NAV_LINKS.map((link) => (
             <a
-              href="#kontakt"
-              className="mt-2 block rounded-lg bg-blue-600 px-5 py-2.5 text-center text-sm font-medium text-white"
+              key={link.href}
+              href={link.href}
+              className="text-3xl font-semibold text-white transition-opacity hover:opacity-70"
               onClick={() => setMobileMenuOpen(false)}
             >
-              Kontaktujte nás
+              {link.label}
             </a>
-          </div>
-        )}
-      </nav>
+          ))}
+        </nav>
+      </div>
 
       {/* Hero Section */}
       <section ref={heroRef} className="relative flex min-h-screen items-center overflow-hidden">
@@ -194,7 +185,7 @@ export default function Home() {
           <div className="max-w-2xl">
             <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-blue-400/30 bg-blue-500/10 px-4 py-1.5 text-sm text-blue-200 backdrop-blur-sm">
               <span className="h-1.5 w-1.5 rounded-full bg-blue-400" />
-              Profesionálny solárny servis od roku 2011
+              Profesionálne solárne služby od roku 2011
             </div>
             <h1 className="mb-6 text-4xl font-bold leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl">
               Energia zo slnka.{" "}
@@ -472,7 +463,7 @@ export default function Home() {
             onMouseLeave={() => setMapActive(false)}
           >
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2672.5!2d19.3483!3d48.2131!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x473ff965ee690cab%3A0x710c3b4e902a0a86!5e0!3m2!1ssk!2ssk!4v1700000000000!5m2!1ssk!2ssk"
+              src="https://maps.google.com/maps?q=SMS+-+Servis+Mont%C3%A1%C5%BE+Sol%C3%A1r,+SNP+18,+990+01+Ve%C4%BEk%C3%BD+Krt%C3%AD%C5%A1&t=&z=15&ie=UTF8&iwloc=&output=embed"
               width="100%"
               height="400"
               style={{ border: 0, pointerEvents: mapActive ? "auto" : "none" }}
