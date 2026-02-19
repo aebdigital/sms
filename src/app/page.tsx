@@ -8,6 +8,7 @@ const NAV_LINKS = [
   { href: "#o-nas", label: "O nás" },
   { href: "#sluzby", label: "Služby" },
   { href: "#galeria", label: "Galéria" },
+  { href: "#kariera", label: "Kariéra" },
   { href: "#kontakt", label: "Kontakt" },
 ];
 
@@ -107,15 +108,21 @@ export default function Home() {
       {/* Navigation */}
       <nav className="fixed top-0 z-50 w-full bg-gradient-to-b from-black/70 via-black/30 to-transparent">
         <div className="flex w-full items-center justify-between px-6 py-5 sm:px-12 lg:px-24">
-          <a href="#" className="flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-600 text-sm font-bold text-white">
-              SMS
+          <a href="#" className="group flex flex-col items-center sm:items-start gap-3 py-2">
+            <div className="relative overflow-hidden rounded-xl bg-white/10 p-1 transition-transform group-hover:scale-105">
+              <Image
+                src="/smslogo.jpg"
+                alt="SMS Logo"
+                width={80}
+                height={80}
+                className="h-auto w-20 rounded-lg object-contain sm:w-24"
+              />
             </div>
-            <div className="hidden sm:block">
-              <p className="text-sm font-semibold leading-tight text-white">
+            <div className="text-center sm:text-left">
+              <p className="text-[11px] font-bold leading-none text-white uppercase tracking-widest">
                 SMS - Servis Montáž Solár
               </p>
-              <p className="text-xs text-white/60">s.r.o.</p>
+              <p className="mt-1 text-[9px] font-medium text-white/50">s.r.o.</p>
             </div>
           </a>
 
@@ -151,9 +158,8 @@ export default function Home() {
 
       {/* Mobile fullscreen overlay */}
       <div
-        className={`fixed inset-0 z-40 flex flex-col items-center justify-center bg-slate-900/95 backdrop-blur-md transition-opacity duration-300 md:pointer-events-none md:hidden ${
-          mobileMenuOpen ? "opacity-100" : "pointer-events-none opacity-0"
-        }`}
+        className={`fixed inset-0 z-40 flex flex-col items-center justify-center bg-slate-900/95 backdrop-blur-md transition-opacity duration-300 md:pointer-events-none md:hidden ${mobileMenuOpen ? "opacity-100" : "pointer-events-none opacity-0"
+          }`}
       >
         <nav className="flex flex-col items-center gap-10">
           {NAV_LINKS.map((link) => (
@@ -225,28 +231,39 @@ export default function Home() {
                 O nás
               </p>
               <h2 className="mb-6 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-                Viac ako dekáda skúseností v solárnej energetike
+                Odborníci na fotovoltaiku a elektroinštalácie
               </h2>
-              <p className="mb-6 text-base leading-relaxed text-slate-600">
-                Spoločnosť SMS - Servis Montáž Solár s.r.o. pôsobí na slovenskom
-                trhu od roku 2011. Špecializujeme sa na komplexné služby v oblasti
-                fotovoltaiky — od projekcie a montáže, cez servis a údržbu, až po
-                monitoring a zabezpečenie solárnych elektrární.
-              </p>
-              <p className="mb-8 text-base leading-relaxed text-slate-600">
-                Naším cieľom je zabezpečiť maximálnu efektivitu a životnosť
-                vašich solárnych systémov. Spolupracujeme s overenými dodávateľmi
-                a používame najmodernejšie technológie.
-              </p>
-              <div className="grid grid-cols-2 gap-6">
-                <div className="rounded-xl border border-slate-100 bg-slate-50 p-5 text-center">
-                  <p className="text-2xl font-bold text-blue-600">13+</p>
-                  <p className="mt-1 text-xs text-slate-500">Rokov skúseností</p>
-                </div>
-                <div className="rounded-xl border border-slate-100 bg-slate-50 p-5 text-center">
-                  <p className="text-2xl font-bold text-blue-600">100+</p>
-                  <p className="mt-1 text-xs text-slate-500">Realizovaných projektov</p>
-                </div>
+              <div className="space-y-4 text-base leading-relaxed text-slate-600">
+                <p>
+                  Firma SMS-Servis Montáž Solár s.r.o. bola založená v roku 2011 vo Veľkom Krtíši.
+                  Prevádzka firmy sa nachádza v Lučenci v multifunkčnej budove, vybavenej kanceláriami,
+                  skladovými priestormi, dielňami a garážami pre motorové vozidlá.
+                </p>
+                <p>
+                  Momentálne má 7 zamestnancov, ale v rámci rozširovania firmy pracuje aj na prijatí
+                  ďalších odborných zamestnancov. Firma je zástancom ekologickej výroby elektrickej energie,
+                  preto sa zaoberá výstavbou a údržbou centrálnych aj decentrálnych fotovoltaických elektrární.
+                </p>
+                <p>
+                  Firma sa podieľala na výstavbe 17ks fotovoltaických parkov. Momentálne má uzatvorené zmluvy
+                  s firmami, pre ktoré spravuje, udržiava a zabezpečuje nepretržitú pohotovosť pre plynulý chod
+                  62 fotovoltaických elektrární. V rámci údržby sa tiež vykonávajú revízie jednotlivých zariadení.
+                </p>
+                <p>
+                  Firma má oprávnenie na činnosť v rozsahu nízkeho napätia a vysokého napätia bez obmedzenia,
+                  aj do výbušného a banského prostredia v rozsahu kategórie C6. Zároveň má tiež certifikát na
+                  inštalácie a opravy vysokonapäťových káblových súborov (RAYCHEM, CELLPACK, ENSTO) a ako
+                  Inštalatér fotovoltaických systémov podľa zákona 309/2009.
+                </p>
+                <p>
+                  V súčasnosti spolupracuje s viac ako 15 firmami. Jeden zo zakladateľov spoločnosti pôsobil
+                  11 rokov na území Maďarskej republiky a bol vykonávateľom elektroinštalačných prác pri výstavbe
+                  viacerých obchodných stredísk, nemocníc, kancelárskych budov a bytových komplexov.
+                </p>
+                <p>
+                  Okrem fotovoltaických systémov vykonáva aj projektovanie r konštruovanie elektrických zariadení,
+                  elektroinštalačné práce pre domácnosti, ako aj pre firmy pri väčších projektoch.
+                </p>
               </div>
             </div>
             <div className="relative">
@@ -329,22 +346,20 @@ export default function Home() {
               <button
                 key={image.src}
                 onClick={() => setLightboxImg(image.src)}
-                className={`group relative overflow-hidden rounded-xl ${
-                  i === 0 || i === 3
-                    ? "sm:col-span-2 sm:row-span-2"
-                    : ""
-                }`}
+                className={`group relative overflow-hidden rounded-xl ${i === 0 || i === 3
+                  ? "sm:col-span-2 sm:row-span-2"
+                  : ""
+                  }`}
               >
                 <Image
                   src={image.src}
                   alt={image.alt}
                   width={800}
                   height={600}
-                  className={`w-full object-cover transition-transform duration-500 group-hover:scale-105 ${
-                    i === 0 || i === 3
-                      ? "h-64 sm:h-full sm:min-h-[400px]"
-                      : "h-48 sm:h-48"
-                  }`}
+                  className={`w-full object-cover transition-transform duration-500 group-hover:scale-105 ${i === 0 || i === 3
+                    ? "h-64 sm:h-full sm:min-h-[400px]"
+                    : "h-48 sm:h-48"
+                    }`}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/50 via-transparent to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
                 <p className="absolute bottom-4 left-4 text-sm font-medium text-white opacity-0 transition-opacity group-hover:opacity-100">
@@ -382,6 +397,109 @@ export default function Home() {
         </div>
       )}
 
+      {/* Career Section */}
+      <section id="kariera" className="bg-slate-50 py-24">
+        <div className="px-6 sm:px-12 lg:px-24">
+          <div className="grid gap-16 lg:grid-cols-2">
+            <div>
+              <p className="mb-3 text-sm font-semibold uppercase tracking-wider text-blue-600">
+                Kariéra
+              </p>
+              <h2 className="mb-6 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
+                Pracujte s nami na zelenšej budúcnosti
+              </h2>
+              <div className="rounded-2xl border border-blue-100 bg-white p-8 shadow-sm transition-all hover:shadow-md">
+                <div className="mb-6 flex items-center justify-between">
+                  <h3 className="text-xl font-bold text-slate-900">Elektrikár, Elektrotechnik</h3>
+                  <span className="rounded-full bg-blue-100 px-3 py-1 text-xs font-semibold text-blue-700">
+                    Plný úväzok
+                  </span>
+                </div>
+
+                <div className="space-y-6">
+                  <div>
+                    <h4 className="mb-2 text-sm font-semibold text-slate-900">Požiadavky:</h4>
+                    <ul className="list-inside list-disc space-y-1 text-sm text-slate-600">
+                      <li>Odborné stredoškolské vzdelanie (elektrikár, elektrotechnik)</li>
+                      <li>Výučný list, minimum odborná spôsobilosť §21</li>
+                      <li>Vhodné aj pre absolventov</li>
+                    </ul>
+                  </div>
+
+                  <div>
+                    <h4 className="mb-2 text-sm font-semibold text-slate-900">Čo ponúkame:</h4>
+                    <ul className="list-inside list-disc space-y-1 text-sm text-slate-600">
+                      <li>Dlhodobý pracovný úväzok v stabilnej firme</li>
+                      <li>Možnosť rozšírenia odborného vzdelávania</li>
+                      <li>Lokalita: Lučenec a okolie</li>
+                      <li>Platové podmienky: podľa dohody na osobnom stretnutí</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="rounded-2xl border border-slate-200 bg-white p-8 shadow-lg">
+              <h3 className="mb-6 text-lg font-semibold text-slate-900">Pošlite nám svoj životopis</h3>
+              <form className="space-y-4">
+                <div className="grid gap-4 sm:grid-cols-2">
+                  <div>
+                    <label className="mb-1.5 block text-xs font-medium text-slate-500">Meno a priezvisko</label>
+                    <input
+                      type="text"
+                      className="w-full rounded-lg border border-slate-200 bg-slate-50 px-4 py-2.5 text-sm outline-none transition-all focus:border-blue-500 focus:bg-white"
+                      placeholder="napr. Peter Novák"
+                    />
+                  </div>
+                  <div>
+                    <label className="mb-1.5 block text-xs font-medium text-slate-500">Telefónne číslo</label>
+                    <input
+                      type="tel"
+                      className="w-full rounded-lg border border-slate-200 bg-slate-50 px-4 py-2.5 text-sm outline-none transition-all focus:border-blue-500 focus:bg-white"
+                      placeholder="+421 900 000 000"
+                    />
+                  </div>
+                </div>
+                <div>
+                  <label className="mb-1.5 block text-xs font-medium text-slate-500">E-mailová adresa</label>
+                  <input
+                    type="email"
+                    className="w-full rounded-lg border border-slate-200 bg-slate-50 px-4 py-2.5 text-sm outline-none transition-all focus:border-blue-500 focus:bg-white"
+                    placeholder="email@priklad.sk"
+                  />
+                </div>
+                <div>
+                  <label className="mb-1.5 block text-xs font-medium text-slate-500">Znalosti a skúsenosti</label>
+                  <textarea
+                    rows={3}
+                    className="w-full resize-none rounded-lg border border-slate-200 bg-slate-50 px-4 py-2.5 text-sm outline-none transition-all focus:border-blue-500 focus:bg-white"
+                    placeholder="Stručne popíšte vaše doterajšie skúsenosti..."
+                  />
+                </div>
+                <div>
+                  <label className="mb-1.5 block text-xs font-medium text-slate-500">Životopis</label>
+                  <div className="relative flex min-h-[100px] cursor-pointer items-center justify-center rounded-lg border-2 border-dashed border-slate-200 bg-slate-50 transition-all hover:bg-slate-100">
+                    <div className="text-center">
+                      <svg className="mx-auto mb-2 h-6 w-6 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16v1a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3v-1m-4-8-4-4m0 0L8 8m4-4v12" />
+                      </svg>
+                      <p className="text-[10px] text-slate-500 px-4">Presuňte sem váš životopis (PDF) alebo kliknite pre výber</p>
+                    </div>
+                    <input type="file" className="absolute inset-0 opacity-0" />
+                  </div>
+                </div>
+                <button
+                  type="button"
+                  className="w-full rounded-lg bg-blue-600 py-3 text-sm font-semibold text-white transition-all hover:bg-blue-700 active:scale-[0.98]"
+                >
+                  Odoslať žiadosť
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Contact Section */}
       <section id="kontakt" className="bg-slate-900 py-24">
         <div className="px-6 sm:px-12 lg:px-24">
@@ -398,7 +516,7 @@ export default function Home() {
                 Radi vám poradíme a pripravíme nezáväznú ponuku.
               </p>
 
-              <div className="space-y-6">
+              <div className="space-y-8">
                 <div className="flex items-start gap-4">
                   <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-blue-600/10">
                     <svg className="h-5 w-5 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
@@ -407,51 +525,99 @@ export default function Home() {
                     </svg>
                   </div>
                   <div>
-                    <p className="text-sm font-semibold text-white">Adresa</p>
+                    <p className="text-sm font-semibold text-white">Sídlo firmy</p>
                     <p className="mt-1 text-sm text-slate-400">
-                      SMS - Servis Montáž Solár s.r.o.
-                      <br />
                       SNP 18, 990 01 Veľký Krtíš
                     </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-blue-600/10">
+                    <svg className="h-5 w-5 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-3h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h18" />
+                    </svg>
+                  </div>
+                  <div>
+                    <p className="text-sm font-semibold text-white">Adresa prevádzky</p>
+                    <p className="mt-1 text-sm text-slate-400">
+                      Ľudmily Podjavorinskej 1061/8
+                      <br />
+                      984 01 Lučenec
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-blue-600/10">
+                    <svg className="h-5 w-5 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.387a12.035 12.035 0 0 1-7.108-7.108c-.155-.44.011-.927.387-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <p className="text-sm font-semibold text-white">Mobil</p>
+                    <a href="tel:+421907811018" className="mt-1 block text-sm text-slate-400 transition-colors hover:text-blue-400">
+                      +421 907 811 018
+                    </a>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-blue-600/10">
+                    <svg className="h-5 w-5 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+                    </svg>
+                  </div>
+                  <div>
+                    <p className="text-sm font-semibold text-white">E-mail</p>
+                    <a href="mailto:sms.budai@gmail.com" className="mt-1 block text-sm text-slate-400 transition-colors hover:text-blue-400">
+                      sms.budai@gmail.com
+                    </a>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div className="rounded-2xl border border-slate-700/50 bg-slate-800/50 p-8 backdrop-blur-sm">
-              <h3 className="mb-6 text-lg font-semibold text-white">
-                Firemné údaje
-              </h3>
-              <div className="space-y-4">
-                <div className="flex items-center justify-between border-b border-slate-700/50 pb-4">
-                  <span className="text-sm text-slate-400">Obchodné meno</span>
-                  <span className="text-sm font-medium text-white">
-                    SMS - Servis Montáž Solár s.r.o.
-                  </span>
+            <div className="space-y-6">
+              <div className="rounded-2xl border border-slate-700/50 bg-slate-800/50 p-8 backdrop-blur-sm">
+                <h3 className="mb-6 text-lg font-semibold text-white">
+                  Firemné údaje
+                </h3>
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between border-b border-slate-700/50 pb-4">
+                    <span className="text-sm text-slate-400">Obchodné meno</span>
+                    <span className="text-sm font-medium text-white text-right">
+                      SMS-Servis Montáž Solár s.r.o.
+                    </span>
+                  </div>
+                  <div className="flex items-center justify-between border-b border-slate-700/50 pb-4">
+                    <span className="text-sm text-slate-400">IČO</span>
+                    <span className="text-sm font-medium text-white">46 290 982</span>
+                  </div>
+                  <div className="flex items-center justify-between border-b border-slate-700/50 pb-4">
+                    <span className="text-sm text-slate-400">IČ DPH</span>
+                    <span className="text-sm font-medium text-white">SK2023 314 051</span>
+                  </div>
                 </div>
-                <div className="flex items-center justify-between border-b border-slate-700/50 pb-4">
-                  <span className="text-sm text-slate-400">Sídlo</span>
-                  <span className="text-right text-sm font-medium text-white">
-                    SNP 18, 990 01 Veľký Krtíš
-                  </span>
-                </div>
-                <div className="flex items-center justify-between border-b border-slate-700/50 pb-4">
-                  <span className="text-sm text-slate-400">IČO</span>
-                  <span className="text-sm font-medium text-white">46290982</span>
-                </div>
-                <div className="flex items-center justify-between border-b border-slate-700/50 pb-4">
-                  <span className="text-sm text-slate-400">DIČ</span>
-                  <span className="text-sm font-medium text-white">2023314051</span>
-                </div>
-                <div className="flex items-center justify-between border-b border-slate-700/50 pb-4">
-                  <span className="text-sm text-slate-400">IČ DPH</span>
-                  <span className="text-sm font-medium text-white">SK2023314051</span>
-                </div>
-                <div className="flex items-center justify-between">
-                  <span className="text-sm text-slate-400">Registrácia DPH</span>
-                  <span className="text-right text-sm font-medium text-white">
-                    podľa §4, od 1.12.2011
-                  </span>
+              </div>
+
+              <div className="rounded-2xl border border-slate-700/50 bg-slate-800/50 p-8 backdrop-blur-sm">
+                <h3 className="mb-6 text-lg font-semibold text-white">
+                  Bankové spojenie
+                </h3>
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between border-b border-slate-700/50 pb-4">
+                    <span className="text-sm text-slate-400">Banka</span>
+                    <span className="text-sm font-medium text-white">Tatra banka a.s.</span>
+                  </div>
+                  <div className="flex flex-col border-b border-slate-700/50 pb-4">
+                    <span className="mb-1 text-sm text-slate-400">IBAN</span>
+                    <span className="text-sm font-medium text-white">SK69 1100 0000 0029 2086 1128</span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm text-slate-400">SWIFT</span>
+                    <span className="text-sm font-medium text-white">TATRSKBX</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -463,14 +629,14 @@ export default function Home() {
             onMouseLeave={() => setMapActive(false)}
           >
             <iframe
-              src="https://maps.google.com/maps?q=SMS+-+Servis+Mont%C3%A1%C5%BE+Sol%C3%A1r,+SNP+18,+990+01+Ve%C4%BEk%C3%BD+Krt%C3%AD%C5%A1&t=&z=15&ie=UTF8&iwloc=&output=embed"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2645.1!2d19.652!3d48.339!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471550c6d590e87d%3A0x6739d42858804680!2zbcS+ZG1pbHkgUG9kamF2b3JpbnNrZWogMTA2MS84LCA5ODQgMDEgTHXEjWVuZWM!5e0!3m2!1ssk!2ssk!4v1710000000000!5m2!1ssk!2ssk"
               width="100%"
               height="400"
               style={{ border: 0, pointerEvents: mapActive ? "auto" : "none" }}
               allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              title="SMS - Servis Montáž Solár s.r.o. - mapa"
+              title="SMS - Servis Montáž Solár s.r.o. - prevádzka Lučenec"
             />
             {!mapActive && (
               <button
@@ -491,9 +657,13 @@ export default function Home() {
         <div className="px-6 sm:px-12 lg:px-24">
           <div className="flex flex-col items-center justify-between gap-6 sm:flex-row">
             <div className="flex items-center gap-3">
-              <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-blue-600 text-xs font-bold text-white">
-                SMS
-              </div>
+              <Image
+                src="/smslogo.jpg"
+                alt="SMS Logo"
+                width={32}
+                height={32}
+                className="rounded-md object-contain"
+              />
               <p className="text-sm text-slate-400">
                 SMS - Servis Montáž Solár s.r.o.
               </p>
