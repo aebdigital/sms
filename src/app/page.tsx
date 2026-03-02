@@ -70,6 +70,36 @@ export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [lightboxImg, setLightboxImg] = useState<string | null>(null);
   const [mapActive, setMapActive] = useState(false);
+  const [formStatus, setFormStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
+  const [formError, setFormError] = useState("");
+  const formRef = useRef<HTMLFormElement>(null);
+
+  const handleCareerSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setFormStatus("sending");
+    setFormError("");
+
+    try {
+      const formData = new FormData(e.currentTarget);
+      const res = await fetch("/api/career", {
+        method: "POST",
+        body: formData,
+      });
+      const data = await res.json();
+
+      if (!res.ok) {
+        setFormError(data.error || "Nastala chyba pri odosielaní.");
+        setFormStatus("error");
+        return;
+      }
+
+      setFormStatus("success");
+      formRef.current?.reset();
+    } catch {
+      setFormError("Nepodarilo sa odoslať. Skontrolujte pripojenie.");
+      setFormStatus("error");
+    }
+  };
   const heroRef = useRef<HTMLDivElement>(null);
   const heroImageRef = useRef<HTMLDivElement>(null);
 
@@ -441,12 +471,24 @@ export default function Home() {
 
             <div className="rounded-2xl border border-slate-200 bg-white p-8 shadow-lg">
               <h3 className="mb-6 text-lg font-semibold text-slate-900">Pošlite nám svoj životopis</h3>
-              <form className="space-y-4">
+              {formStatus === "success" && (
+                <div className="mb-4 rounded-lg bg-green-50 border border-green-200 p-4 text-sm text-green-700">
+                  Ďakujeme! Vaša žiadosť bola úspešne odoslaná.
+                </div>
+              )}
+              {formStatus === "error" && (
+                <div className="mb-4 rounded-lg bg-red-50 border border-red-200 p-4 text-sm text-red-700">
+                  {formError}
+                </div>
+              )}
+              <form ref={formRef} onSubmit={handleCareerSubmit} className="space-y-4">
                 <div className="grid gap-4 sm:grid-cols-2">
                   <div>
                     <label className="mb-1.5 block text-xs font-medium text-slate-500">Meno a priezvisko</label>
                     <input
+                      name="name"
                       type="text"
+                      required
                       className="w-full rounded-lg border border-slate-200 bg-slate-50 px-4 py-2.5 text-sm outline-none transition-all focus:border-blue-500 focus:bg-white"
                       placeholder="napr. Peter Novák"
                     />
@@ -454,6 +496,7 @@ export default function Home() {
                   <div>
                     <label className="mb-1.5 block text-xs font-medium text-slate-500">Telefónne číslo</label>
                     <input
+                      name="phone"
                       type="tel"
                       className="w-full rounded-lg border border-slate-200 bg-slate-50 px-4 py-2.5 text-sm outline-none transition-all focus:border-blue-500 focus:bg-white"
                       placeholder="+421 900 000 000"
@@ -463,7 +506,9 @@ export default function Home() {
                 <div>
                   <label className="mb-1.5 block text-xs font-medium text-slate-500">E-mailová adresa</label>
                   <input
+                    name="email"
                     type="email"
+                    required
                     className="w-full rounded-lg border border-slate-200 bg-slate-50 px-4 py-2.5 text-sm outline-none transition-all focus:border-blue-500 focus:bg-white"
                     placeholder="email@priklad.sk"
                   />
@@ -471,6 +516,7 @@ export default function Home() {
                 <div>
                   <label className="mb-1.5 block text-xs font-medium text-slate-500">Znalosti a skúsenosti</label>
                   <textarea
+                    name="experience"
                     rows={3}
                     className="w-full resize-none rounded-lg border border-slate-200 bg-slate-50 px-4 py-2.5 text-sm outline-none transition-all focus:border-blue-500 focus:bg-white"
                     placeholder="Stručne popíšte vaše doterajšie skúsenosti..."
@@ -485,14 +531,15 @@ export default function Home() {
                       </svg>
                       <p className="text-[10px] text-slate-500 px-4">Presuňte sem váš životopis (PDF) alebo kliknite pre výber</p>
                     </div>
-                    <input type="file" className="absolute inset-0 opacity-0" />
+                    <input name="file" type="file" accept=".pdf,.doc,.docx" className="absolute inset-0 cursor-pointer opacity-0" />
                   </div>
                 </div>
                 <button
-                  type="button"
-                  className="w-full rounded-lg bg-blue-600 py-3 text-sm font-semibold text-white transition-all hover:bg-blue-700 active:scale-[0.98]"
+                  type="submit"
+                  disabled={formStatus === "sending"}
+                  className="w-full rounded-lg bg-blue-600 py-3 text-sm font-semibold text-white transition-all hover:bg-blue-700 active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  Odoslať žiadosť
+                  {formStatus === "sending" ? "Odosielam..." : "Odoslať žiadosť"}
                 </button>
               </form>
             </div>
