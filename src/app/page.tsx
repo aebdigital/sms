@@ -676,7 +676,7 @@ export default function Home() {
             onMouseLeave={() => setMapActive(false)}
           >
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2645.1!2d19.652!3d48.339!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471550c6d590e87d%3A0x6739d42858804680!2zbcS+ZG1pbHkgUG9kamF2b3JpbnNrZWogMTA2MS84LCA5ODQgMDEgTHXEjWVuZWM!5e0!3m2!1ssk!2ssk!4v1710000000000!5m2!1ssk!2ssk"
+              src="https://www.google.com/maps?q=place_id:ChIJywxp7mX5P0cRhgoqkE47DHE&hl=sk&z=15&output=embed"
               width="100%"
               height="400"
               style={{ border: 0, pointerEvents: mapActive ? "auto" : "none" }}
